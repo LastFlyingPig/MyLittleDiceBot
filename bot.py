@@ -1,4 +1,5 @@
 import telebot
+import os
 from random import randint
 
 f = open("bot.py", "r") 
