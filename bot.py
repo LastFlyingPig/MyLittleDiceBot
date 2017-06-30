@@ -1,34 +1,17 @@
-import os
-from flask import Flask, request
-import telepot
-
-try:
-    from Queue import Queue
-except ImportError:
-    from queue import Queue
-    
+import telebot
 from random import randint
 
 f = open("bot.py", "r") 
 src = f.read()
 
-app = Flask(__name__)
-TOKEN = os.environ['PP_BOT_TOKEN']
-SECRET = '/bot' + TOKEN
-URL = 'https://mylittledicebot.herokuapp.com/' #  paste the url of your application
+bot = telebot.TeleBot(os.environ['PP_BOT_TOKEN'])
 
-UPDATE_QUEUE = Queue()
-BOT = telepot.Bot(TOKEN)
-
-def on_chat_message(msg):
-    content_type, chat_type, chat_id = telepot.glance(msg)
-    BOT.sendMessage(chat_id, 'hello!')
-
-BOT.message_loop({'chat': on_chat_message}, source=UPDATE_QUEUE)  # take updates from queue
-
-@app.route(SECRET, methods=['GET', 'POST'])
-def pass_update():
-    UPDATE_QUEUE.put(request.data)  # pass update to bot
-    return 'OK'
-
-BOT.setWebhook(URL + SECRET)
+@bot.message_handler(content_types=["text"])
+def repeat_all_messages(message):
+    if message.text == '/roll':
+        bot.send_message(message.chat.id, str(randint(1, 6)))
+    elif message.text == '/src':
+        bot.send_message(message.chat.id, src)
+        
+if __name__ == '__main__':
+     bot.polling(none_stop=True)
