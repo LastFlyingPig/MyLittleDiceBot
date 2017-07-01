@@ -7,7 +7,9 @@ from random import randint
 
 TOKEN = os.environ['PP_BOT_TOKEN']
 URL = os.environ['PP_BOT_URL']
+REPO = os.environ['PP_BOT_REPO']
 SECRET = '/' + TOKEN
+
 
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
@@ -32,10 +34,14 @@ def rollsticker(message):
     sticker_id = dices.dice_id_lib[rand_val]
     bot.send_sticker(message.chat.id, sticker_id)
     
-@bot.message_handler(content_types=["text"])
-def repeat_all_messages(message):
-    if message.text == '/src':
-        bot.send_message(message.chat.id, src)
+@bot.message_handler(commands=['src'])
+def src(message):
+    bot.send_message(message.chat.id, REPO)
+    
+#@bot.message_handler(content_types=["text"])
+#def repeat_all_messages(message):
+#    if message.text == '/src':
+#        bot.send_message(message.chat.id, src)
         
 @server.route(SECRET, methods=['POST'])
 def get_message():
