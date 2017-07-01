@@ -38,14 +38,14 @@ def rollsticker(message):
     bot.send_sticker(message.chat.id, sticker_id)
         
 @server.route(SECRET, methods=['POST'])
-def get_message():
+def getMessage():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
-    return "POST", 200
+    return "!", 200
        
 @server.route("/")
-def web_hook():
+def webhook():
     bot.remove_webhook()
     bot.set_webhook(url=URL+SECRET)
-    return "CONNECTED", 200
+    return "!", 200
 
 server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))       
