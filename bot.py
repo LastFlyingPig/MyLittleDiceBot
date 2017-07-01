@@ -32,14 +32,14 @@ def repeat_all_messages(message):
         bot.send_message(message.chat.id, src)
         
 @server.route(SECRET, methods=['POST'])
-def getMessage():
+def get_message():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
-    return "!", 200
+    return "POST", 200
        
 @server.route("/")
-def webhook():
+def web_hook():
     bot.remove_webhook()
     bot.set_webhook(url=URL+SECRET)
-    return "!", 200
+    return "CONNECTED", 200
 
 server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))       
