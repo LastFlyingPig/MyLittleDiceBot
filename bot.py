@@ -9,7 +9,7 @@ TOKEN = os.environ['PP_BOT_TOKEN']
 URL = os.environ['PP_BOT_URL']
 SECRET = '/' + TOKEN
 
-bot = telebot.TeleBot(TOKEN, threaded=False)
+bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 
 @bot.message_handler(commands=['start'])
