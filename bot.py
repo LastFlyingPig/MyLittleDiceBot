@@ -7,7 +7,7 @@ from random import randint
 
 TOKEN = os.environ['PP_BOT_TOKEN']
 URL = os.environ['PP_BOT_URL']
-SECRET = '/bot' + TOKEN
+SECRET = '/' + TOKEN
 
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
@@ -18,7 +18,6 @@ def start(message):
     
 @bot.message_handler(content_types=["text"])
 def repeat_all_messages(message):
-    print(message.text)
     if message.text == '/roll':
         bot.send_message(message.chat.id, str(randint(1, 6)))
     if message.text == '/rolldice':
