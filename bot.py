@@ -18,8 +18,8 @@ server = Flask(__name__)
 def start(message):
     bot.reply_to(message, 'Cheer, ' + message.from_user.first_name)
     
-@bot.message_handler(commands=['roll'])
-def roll(message):
+@bot.message_handler(commands=['roll2'])
+def roll2(message):
     bot.send_message(message.chat.id, str(randint(1, 6)))
     
 @bot.message_handler(commands=['rolldice'])
