@@ -23,7 +23,7 @@ def start(message):
 def roll(message):
     if message.from_user.first_name == "Kain":
         bot.send_message(message.chat.id, str(randint(5, 6)))
-    esle:
+    else:
         bot.send_message(message.chat.id, str(randint(1, 2)))
     
 #@bot.message_handler(commands=['test'])
