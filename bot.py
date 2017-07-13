@@ -22,10 +22,10 @@ def start(message):
 def roll(message):
     bot.send_message(message.chat.id, str(randint(1, 6)))
     
-@bot.message_handler(commands=['test'])
-def test(message):
-    if message.from_user.first_name == "Kain":
-    bot.send_message(message.chat.id, str(randint(1, 100)))
+#@bot.message_handler(commands=['test'])
+#def test(message):
+#    if message.from_user.first_name == "Kain":
+#    bot.send_message(message.chat.id, str(randint(1, 100)))
     
         
 @bot.message_handler(commands=['rolldice'])
