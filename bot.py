@@ -3,6 +3,7 @@ import os
 from flask import Flask, request
 
 import dices
+import rm
 import telebot
 from random import randint
 
@@ -21,10 +22,7 @@ def start(message):
     
 @bot.message_handler(commands=['roll'])
 def roll(message):
-    if message.from_user.first_name == "Kain":
-        bot.send_message(message.chat.id, str(randint(5, 6)))
-    else:
-        bot.send_message(message.chat.id, str(randint(1, 2)))
+    bot.send_message(message.chat.id, str(randint(1, 6)))
     
 #@bot.message_handler(commands=['test'])
 #def test(message):
@@ -34,9 +32,14 @@ def roll(message):
         
 @bot.message_handler(commands=['rolldice'])
 def rolldice(message):
-    rand_val = randint(1, 6)
-    dise_text = dices.dice_lib[rand_val]
-    bot.send_message(message.chat.id, dise_text)
+    if message.from_user.first_name == "Kain":
+        rand_val_rm = randint(1, 10)
+        rm_text = rm.one[rand_val_rm]
+        bot.send_message(message.chat.id, rm_text)  
+    else:
+        rand_val = randint(1, 6)
+        dise_text = dices.dice_lib[rand_val]
+        bot.send_message(message.chat.id, dise_text)
     
 @bot.message_handler(commands=['rollsticker'])
 def rollsticker(message):
