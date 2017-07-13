@@ -23,20 +23,13 @@ def start(message):
 @bot.message_handler(commands=['roll'])
 def roll(message):
     bot.send_message(message.chat.id, str(randint(1, 6)))
-    
-#@bot.message_handler(commands=['test'])
-#def test(message):
-#    if message.from_user.first_name == "Kain":
-#    bot.send_message(message.chat.id, str(randint(1, 100)))
-    
+        
         
 @bot.message_handler(commands=['rolldice'])
 def rolldice(message):
     if message.from_user.first_name == "Kain":
         rand_val_n = randint(1, 5)
-      #  rand_val_t = randint(1, 10)
         rm_n = rm.n[rand_val_n]
-     #   rm_t = rm.t[rand_val_t]
         bot.send_message(message.chat.id, rm_n)  
     else:
         rand_val = randint(1, 6)
