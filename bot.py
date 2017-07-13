@@ -28,7 +28,7 @@ def roll(message):
 @bot.message_handler(commands=['rolldice'])
 def rolldice(message):
     if message.from_user.first_name == "Kain":
-        rand_val_rm_one = randint(1, 10)
+        rand_val_rm_one = randint(1, 5)
         rand_val_rm_two = randint(1, 10)
         rm_text_one = rm.one[rand_val_rm_one]
         rm_text_two = rm.one[rand_val_rm_two]
