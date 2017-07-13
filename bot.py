@@ -2,6 +2,7 @@ import os
 from flask import Flask, request
 
 import dices
+import user
 import telebot
 from random import randint
 
