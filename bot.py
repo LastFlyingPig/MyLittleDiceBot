@@ -28,9 +28,11 @@ def roll(message):
 @bot.message_handler(commands=['rolldice'])
 def rolldice(message):
     if message.from_user.first_name == "Kain":
-        rand_val_rm = randint(1, 10)
-        rm_text = rm.one[rand_val_rm]
-        bot.send_message(message.chat.id, rm_text) 
+        rand_val_rm_one = randint(1, 10)
+        rand_val_rm_two = randint(1, 10)
+        rm_text_one = rm.one[rand_val_rm_one]
+        rm_text_two = rm.one[rand_val_rm_two]
+        bot.send_message(message.chat.id, rm_text_one + rm_text_two) 
     else:
         rand_val = randint(1, 6)
         dise_text = dices.dice_lib[rand_val]
