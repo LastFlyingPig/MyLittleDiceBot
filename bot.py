@@ -31,7 +31,7 @@ def rolldice(message):
         rand_val_rm_one = randint(1, 5)
         rand_val_rm_two = randint(1, 10)
         rm_text_one = rm.one[rand_val_rm_one]
-        rm_text_two = rm.one[rand_val_rm_two]
+        rm_text_two = rm.two[rand_val_rm_two]
         bot.send_message(message.chat.id, rm_text_one + rm_text_two) 
     else:
         rand_val = randint(1, 6)
