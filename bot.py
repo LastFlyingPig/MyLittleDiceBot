@@ -19,6 +19,7 @@ server = Flask(__name__)
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.reply_to(message, 'Cheer, ' + message.from_user.first_name)
+    bot.send_message(message.chat.id, message.from_user.id)
     
 @bot.message_handler(commands=['roll'])
 def roll(message):
