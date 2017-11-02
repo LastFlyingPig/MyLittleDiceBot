@@ -23,8 +23,8 @@ def start(message):
     
 @bot.message_handler(commands=['roll'])
 def roll(message):
-    bot.send_message(message.chat.id, str(randint(1, 6)))
-        
+    # bot.send_message(message.chat.id, str(randint(1, 6)))
+    bot.send_message(message.chat.id, photo='http://voshod.tk/promo/img/fin0.png')
         
 @bot.message_handler(commands=['rolldice'])
 def rolldice(message):
