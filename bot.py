@@ -7,6 +7,8 @@ import rm
 import telebot
 from random import randint
 
+import requests
+
 TOKEN = os.environ['PP_BOT_TOKEN']
 URL = os.environ['PP_BOT_URL']
 REPO = os.environ['PP_BOT_REPO']
@@ -24,7 +26,20 @@ def start(message):
 @bot.message_handler(commands=['roll'])
 def roll(message):
     # bot.send_message(message.chat.id, str(randint(1, 6)))
-    bot.send_message(message.chat.id, photo='http://voshod.tk/promo/img/fin0.png')
+
+    # with open('tmp_pic.jpg', 'wb') as handle:
+    #     response = requests.get('http://voshod.tk/promo/img/fin0.png', stream=True)
+    #
+    #     if not response.ok:
+    #         print
+    #         response
+    #
+    #     for block in response.iter_content(1024):
+    #         if not block:
+    #             break
+    #
+    #         handle.write(block)
+    bot.send_photo(message.chat.id, photo='http://voshod.tk/promo/img/fin0.png')
         
 @bot.message_handler(commands=['rolldice'])
 def rolldice(message):
