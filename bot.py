@@ -52,16 +52,12 @@ def roll(message):
 def roll(message):  
     bot.send_message(message.chat.id,  str(message.chat.id))
 
-@bot.message_handler(commands=['testThis'])
+@bot.message_handler(commands=['botMessage'])
 def roll(message):  
-    bot.send_message(message.chat.id, message.text)
-    msgSplit = message.text.replace('/testThis','').lstrip(' ').split(" ", 1)
-    bot.send_message(message.chat.id, len(msgSplit))
+    msgSplit = message.text.replace('/botMessage','').lstrip(' ').split(" ", 1)
     if len(msgSplit) == 2:
         chatId = msgSplit[0]
         msg = msgSplit[1]
-        bot.send_message(message.chat.id, chatId)
-        bot.send_message(message.chat.id, msg)
         bot.send_message(chatId, msg)
     else:
         bot.send_message(message.chat.id,"ERROR")                
