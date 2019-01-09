@@ -51,7 +51,7 @@ def roll(message):
 
 @bot.message_handler(commands=['chatID'])
 def roll(message):  
-    bot.send_message(message.chat.id,  str(message.chat.id)
+    bot.send_message(message.chat.id,  str(message.chat.id))
 
 @bot.message_handler(commands=['sendMessage'])
 def roll(message):  
