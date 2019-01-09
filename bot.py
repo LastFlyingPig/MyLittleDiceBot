@@ -65,7 +65,9 @@ def roll(message):
 
 @bot.message_handler(commands=['gif'])
 def roll(message):  
+    bot.send_message(message.chat.id, message.text)  
     msg = message.text.replace('/gif','').lstrip(' ')
+    bot.send_message(message.chat.id, msg)  
     if msg != "":
         g = giphypop.Giphy.screensaver(msg)
         bot.send_message(message.chat.id, g.fullscreen)   
