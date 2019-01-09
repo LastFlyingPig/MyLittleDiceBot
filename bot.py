@@ -56,9 +56,12 @@ def roll(message):
 @bot.message_handler(commands=['sendMessage'])
 def roll(message):  
     msgSplit = message.text.replace('/sendMessage','').lstrip(' ').lsplit(" ", 1)
+    bot.send_message(message.chat.id, len(msgSplit))
     if len(msgSplit) == 2:
         chatId = msgSplit[0]
         msg = msgSplit[1]
+        bot.send_message(message.chat.id, chatId)
+        bot.send_message(message.chat.id, msg)
         bot.send_message(chatId, msg)
     else:
         bot.send_message(message.chat.id,"ERROR")                
