@@ -51,8 +51,18 @@ def roll(message):
 
 @bot.message_handler(commands=['chatID'])
 def roll(message):  
-    bot.send_message(message.chat.id, message.chat.id)
-        
+    bot.send_message(message.chat.id,  str(message.chat.id)
+
+@bot.message_handler(commands=['sendMessage'])
+def roll(message):  
+    msgSplit = message.text.replace('/magic','').lstrip(' ').lsplit(" ", 1)
+    if len(msgSplit) == 2:
+        chatId = msgSplit[0]
+        msg = msgSplit[1]
+        bot.send_message(chatId, msg)
+    else:
+        bot.send_message(message.chat.id,"ERROR")                
+
 @bot.message_handler(commands=['src'])
 def src(message):
     bot.send_message(message.chat.id, REPO)
