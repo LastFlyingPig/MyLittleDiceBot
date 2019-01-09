@@ -1,2 +1,4 @@
 PyTelegramBotAPI
 flask
+requests==1.2.3
+giphypop
