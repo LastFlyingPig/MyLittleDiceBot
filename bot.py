@@ -45,7 +45,7 @@ def roll(message):
     msg = message.text.replace('/magic ','')
     botAns = magic.magicBall[randint(0, len(magic.magicBall) - 1)]
     botMsg = botAns
-    if message.text != "":
+    if msg != "":
         botMsg = "\"" + msg + "\": " + botAns
     bot.send_message(message.chat.id, botMsg)
     
