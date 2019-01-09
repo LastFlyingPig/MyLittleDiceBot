@@ -3,6 +3,7 @@ import os
 from flask import Flask, request
 
 import dices
+import magic
 # import rm
 import telebot
 from random import randint
@@ -59,6 +60,10 @@ def rollsticker(message):
     rand_val = randint(1, 6)
     sticker_id = dices.dice_id_lib[rand_val]
     bot.send_sticker(message.chat.id, sticker_id)
+
+@bot.message_handler(commands=['magic'])
+def roll(message):
+    bot.send_message(message.chat.id, magic.magicBall[randint(0, len(magic.magicBall) - 1)])
     
 @bot.message_handler(commands=['src'])
 def src(message):
