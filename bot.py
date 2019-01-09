@@ -55,7 +55,7 @@ def roll(message):
 
 @bot.message_handler(commands=['sendMessage'])
 def roll(message):  
-    msgSplit = message.text.replace('/magic','').lstrip(' ').lsplit(" ", 1)
+    msgSplit = message.text.replace('/sendMessage','').lstrip(' ').lsplit(" ", 1)
     if len(msgSplit) == 2:
         chatId = msgSplit[0]
         msg = msgSplit[1]
