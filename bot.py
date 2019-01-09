@@ -15,7 +15,6 @@ URL = os.environ['PP_BOT_URL']
 REPO = os.environ['PP_BOT_REPO']
 SECRET = '/' + TOKEN
 
-
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 
@@ -55,6 +54,7 @@ def roll(message):
 
 @bot.message_handler(commands=['testThis'])
 def roll(message):  
+    bot.send_message(message.chat.id, message.text)
     msgSplit = message.text.replace('/testThis','').lstrip(' ').lsplit(" ", 1)
     bot.send_message(message.chat.id, len(msgSplit))
     if len(msgSplit) == 2:
