@@ -25,34 +25,34 @@ def start(message):
     
 @bot.message_handler(commands=['roll'])
 def roll(message):
-    # bot.send_message(message.chat.id, str(randint(1, 6)))
+    bot.send_message(message.chat.id, str(randint(1, 6)))
 
     # with open('tmp_pic.jpg', 'wb') as handle:
     #     response = requests.get('http://voshod.tk/promo/img/fin0.png', stream=True)
-    #
+    
     #     if not response.ok:
     #         print
     #         response
-    #
+    
     #     for block in response.iter_content(1024):
     #         if not block:
     #             break
-    #
+    
     #         handle.write(block)
-    bot.send_photo(message.chat.id, photo='http://voshod.tk/promo/img/fin0.png')
+    # bot.send_photo(message.chat.id, photo='http://voshod.tk/promo/img/fin0.png')
         
 @bot.message_handler(commands=['rolldice'])
 def rolldice(message):
-    if message.from_user.id == 301044437:
-        rand_val_rm_one = randint(1, 5)
-        rand_val_rm_two = randint(1, 10)
-        rm_text_one = rm.one[rand_val_rm_one]
-        rm_text_two = rm.two[rand_val_rm_two]
-        bot.send_message(message.chat.id, rm_text_one + rm_text_two) 
-    else:
-        rand_val = randint(1, 6)
-        dise_text = dices.dice_lib[rand_val]
-        bot.send_message(message.chat.id, dise_text)
+    # if message.from_user.id == 301044437:
+    #     rand_val_rm_one = randint(1, 5)
+    #     rand_val_rm_two = randint(1, 10)
+    #     rm_text_one = rm.one[rand_val_rm_one]
+    #     rm_text_two = rm.two[rand_val_rm_two]
+    #     bot.send_message(message.chat.id, rm_text_one + rm_text_two) 
+    # else:
+    rand_val = randint(1, 6)
+    dise_text = dices.dice_lib[rand_val]
+    bot.send_message(message.chat.id, dise_text)
     
 @bot.message_handler(commands=['rollsticker'])
 def rollsticker(message):
