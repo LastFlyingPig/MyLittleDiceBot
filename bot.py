@@ -6,7 +6,7 @@ import dices
 import magic
 # import rm
 import telebot
-# import giphypop
+import giphypop
 from random import randint
 
 import requests
@@ -63,14 +63,14 @@ def roll(message):
     else:
         bot.send_message(message.chat.id,"ERROR")    
 
-# @bot.message_handler(commands=['gif'])
-# def roll(message):  
-#     bot.send_message(message.chat.id, message.text)  
-#     msg = message.text.replace('/gif','').lstrip(' ')
-#     bot.send_message(message.chat.id, msg)  
-#     if msg != "":
-#         g = giphypop.Giphy.screensaver(msg)
-#         bot.send_message(message.chat.id, g.fullscreen)   
+@bot.message_handler(commands=['gif'])
+def roll(message):  
+    bot.send_message(message.chat.id, message.text)  
+    msg = message.text.replace('/gif','').lstrip(' ')
+    bot.send_message(message.chat.id, msg)  
+    if msg != "":
+        g = giphypop.Giphy.screensaver(msg)
+        bot.send_message(message.chat.id, g.fullscreen)   
 
 @bot.message_handler(commands=['src'])
 def src(message):
