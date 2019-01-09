@@ -69,7 +69,7 @@ def roll(message):
     if msg != "":
         g = giphypop.Giphy()
         gr = g.screensaver(msg)
-        bot.send_message(message.chat.id, str(gr.url)   
+        bot.send_message(message.chat.id, str(gr.url))   
 
 @bot.message_handler(commands=['src'])
 def src(message):
