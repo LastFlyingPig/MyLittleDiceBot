@@ -42,13 +42,11 @@ def rollsticker(message):
 
 @bot.message_handler(commands=['magic'])
 def roll(message):
-    bot.send_message(message.chat.id, message.text)
-    msg = message.text.replace('/magic ','')
-    bot.send_message(message.chat.id, msg)
+    msg = message.text.replace('/magic','').lstrip(' ')
     botAns = magic.magicBall[randint(0, len(magic.magicBall) - 1)]
     botMsg = botAns
     if msg != "":
-        botMsg = "\"" + msg + "\": " + botAns
+        botMsg = "\"" + msg + "\":\t" + botAns
     bot.send_message(message.chat.id, botMsg)
     
 @bot.message_handler(commands=['src'])
