@@ -46,9 +46,13 @@ def roll(message):
     botAns = magic.magicBall[randint(0, len(magic.magicBall) - 1)]
     botMsg = botAns
     if msg != "":
-        botMsg = "\"" + msg + "\":\t" + botAns
+        botMsg = "\"" + msg + "\": " + botAns
     bot.send_message(message.chat.id, botMsg)
-    
+
+@bot.message_handler(commands=['chatID'])
+def roll(message):  
+    bot.send_message(message.chat.id, message.chat.id)
+        
 @bot.message_handler(commands=['src'])
 def src(message):
     bot.send_message(message.chat.id, REPO)
