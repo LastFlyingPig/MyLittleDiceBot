@@ -84,6 +84,7 @@ def test(message):
 
     # Define cseargs for search
     cseargs = {
+        'searchType': 'image',
         'q': 'cat',
         'cx': SEACHID,
         'num': 3
