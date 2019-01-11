@@ -77,7 +77,7 @@ def rGif(message):
 @bot.message_handler(commands=['test'])
 def test(message):  
     buildargs = {
-        'serviceName': 'LittleDiceBot',                        
+        'serviceName': 'customsearch',                        
         'version': 'v1',                                 
         'developerKey': SEARCHAPI        
     }
