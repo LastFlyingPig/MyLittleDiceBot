@@ -90,7 +90,7 @@ def test(message):
     }
 
     results = search_google.api.results(buildargs, cseargs)
-    bot.send_message(message.chat.id, len(results.links)) 
+    bot.send_message(message.chat.id, results.links[0]) 
 
 @bot.message_handler(commands=['src'])
 def src(message):
