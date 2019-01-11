@@ -1,3 +1,4 @@
 PyTelegramBotAPI
 flask
 giphypop
+search_google
