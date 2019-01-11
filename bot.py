@@ -87,13 +87,16 @@ def imageSearch(message):
         # Define cseargs for search
         cseargs = {
             'searchType': 'image',
-            'q': 'cat',
+            'q': msg,
             'cx': SEACHID,
             'num': 5
         }
 
         results = search_google.api.results(buildargs, cseargs)
-        bot.send_message(message.chat.id, results.links[randint(0, len(results.links) - 1)]) 
+        if len(results.links) != 0
+            bot.send_message(message.chat.id, results.links[randint(0, len(results.links) - 1)]) 
+        else:
+            bot.send_message(message.chat.id, "ERROR") 
 
 @bot.message_handler(commands=['src'])
 def src(message):
