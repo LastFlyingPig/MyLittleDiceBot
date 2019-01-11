@@ -8,6 +8,7 @@ import magic
 import telebot
 import giphypop
 from random import randint
+import search_google.api
 
 import requests
 
@@ -15,6 +16,8 @@ TOKEN = os.environ['PP_BOT_TOKEN']
 URL = os.environ['PP_BOT_URL']
 REPO = os.environ['PP_BOT_REPO']
 SECRET = '/' + TOKEN
+SEACHID = os.environ['PP_BOT_SEARCH_ID']
+SEARCHAPI = os.environ['PP_BOT_SEARCH_API_KEY']
 
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
@@ -41,7 +44,7 @@ def rollsticker(message):
     bot.send_sticker(message.chat.id, sticker_id)
 
 @bot.message_handler(commands=['magic'])
-def roll(message):
+def magic(message):
     msg = message.text.replace('/magic','').lstrip(' ')
     botAns = magic.magicBall[randint(0, len(magic.magicBall) - 1)]
     botMsg = botAns
@@ -50,11 +53,11 @@ def roll(message):
     bot.send_message(message.chat.id, botMsg)
 
 @bot.message_handler(commands=['chatID'])
-def roll(message):  
+def chatID(message):  
     bot.send_message(message.chat.id,  str(message.chat.id))
 
 @bot.message_handler(commands=['botMessage'])
-def roll(message):  
+def botMessage(message):  
     msgSplit = message.text.replace('/botMessage','').lstrip(' ').split(" ", 1)
     if len(msgSplit) == 2:
         chatId = msgSplit[0]
@@ -64,12 +67,30 @@ def roll(message):
         bot.send_message(message.chat.id,"ERROR")    
 
 @bot.message_handler(commands=['gif'])
-def roll(message):  
+def rGif(message):  
     msg = message.text.replace('/gif','').lstrip(' ')
     if msg != "":
         g = giphypop.Giphy()
         gr = g.screensaver(msg)
         bot.send_message(message.chat.id, str(gr.url))   
+
+@bot.message_handler(commands=['test'])
+def test(message):  
+    buildargs = {
+        'serviceName': 'LittleDiceBot',                        
+        'version': 'v1',                                 
+        'developerKey': SEARCHAPI        
+    }
+
+    # Define cseargs for search
+    cseargs = {
+        'q': 'cat',
+        'cx': SEACHID,
+        'num': 3
+    }
+
+    results = search_google.api.results(buildargs, cseargs)
+    bot.send_message(message.chat.id, len(results.links)) 
 
 @bot.message_handler(commands=['src'])
 def src(message):
