@@ -74,9 +74,9 @@ def rGif(message):
         gr = g.screensaver(msg)
         bot.send_message(message.chat.id, str(gr.url))   
 
-@bot.message_handler(commands=['image'])
+@bot.message_handler(commands=['img'])
 def imageSearch(message):  
-    msg = message.text.replace('/image','').lstrip(' ')
+    msg = message.text.replace('/img','').lstrip(' ')
     if msg != " ":
         buildargs = {
             'serviceName': 'customsearch',                        
