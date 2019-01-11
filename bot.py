@@ -87,7 +87,7 @@ def imageSearch(message):
         # Define cseargs for search
         cseargs = {
             'searchType': 'image',
-            'q': msg,
+            'q': 'cat',
             'cx': SEACHID,
             'num': 100
         }
