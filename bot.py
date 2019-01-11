@@ -89,7 +89,7 @@ def imageSearch(message):
             'searchType': 'image',
             'q': 'cat',
             'cx': SEACHID,
-            'num': 100
+            'num': 5
         }
 
         results = search_google.api.results(buildargs, cseargs)
