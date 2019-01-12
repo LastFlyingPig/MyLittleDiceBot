@@ -44,7 +44,7 @@ def rollsticker(message):
     bot.send_sticker(message.chat.id, sticker_id)
 
 @bot.message_handler(commands=['magic'])
-def magic(message):
+def magicBall(message):
     msg = message.text.replace('/magic','').lstrip(' ')
     botAns = magic.magicBall[randint(0, len(magic.magicBall) - 1)]
     botMsg = botAns
