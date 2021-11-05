@@ -74,29 +74,6 @@ def rGif(message):
         gr = g.screensaver(msg)
         bot.send_message(message.chat.id, str(gr.url))   
 
-@bot.message_handler(commands=['img'])
-def imageSearch(message):  
-    msg = message.text.replace('/img','').lstrip(' ')
-    if msg != " ":
-        buildargs = {
-            'serviceName': 'customsearch',                        
-            'version': 'v1',                                 
-            'developerKey': SEARCHAPI        
-        }
-
-        # Define cseargs for search
-        cseargs = {
-            'searchType': 'image',
-            'q': msg,
-            'cx': SEACHID
-        }
-
-        results = search_google.api.results(buildargs, cseargs)
-        if len(results.links) != 0:
-            bot.send_message(message.chat.id, results.links[randint(0, len(results.links) - 1)]) 
-        else:
-            bot.send_message(message.chat.id, "ERROR") 
-
 @bot.message_handler(commands=['src'])
 def src(message):
     bot.send_message(message.chat.id, REPO)
